@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Asirem Perfumes</title>
+</head>
+<body>
+    <!-- Menu fragment -->
+    <div th:replace="~{fragments/fragments::menu}"></div>
+
+    <div class="container">
+        <h1 class="mt-5">Perfume List</h1>
+
+        <!-- Create new perfume button -->
+        <a class="btn btn-primary mt-3" th:href="@{/perfumes/add}">Create New Perfume</a>
+
+        <!-- Perfume table -->
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="perfume : ${perfumes}">
+                    <td th:text="${perfume.id}"></td>
+                    <td th:text="${perfume.name}"></td>
+                    <td th:text="${perfume.brand}"></td>
+                    <td th:text="${perfume.price}"></td>
+                    <td th:text="${perfume.description}"></td>
+                    <td>
+                        <a th:href="@{/perfumes/details/{id}(id=${perfume.id})}" class="btn btn-outline-success">Details</a>
+                        <a th:href="@{/perfumes/edit/{id}(id=${perfume.id})}" class="btn btn-outline-warning">Edit</a>
+                        <a th:href="@{/perfumes/delete/{id}(id=${perfume.id})}" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

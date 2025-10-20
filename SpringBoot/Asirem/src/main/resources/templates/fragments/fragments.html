@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Title</title>
+</head>
+<body>
+<nav th:fragment="menu" class="navbar">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/perfumes}">Asirem</a>
+        <ul class="nav-links">
+            <li><a th:href="@{/perfumes}">Home</a></li>
+            <li><a th:href="@{/perfumes/add}">Add Perfume</a></li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>
